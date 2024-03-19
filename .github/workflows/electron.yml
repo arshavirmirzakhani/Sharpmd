@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: 16
 
-      - name: Build/release Electron app
+      - name: install Electron 
+        run: npm install electron
+        
+      - name: build app 
         run: electron .
 
