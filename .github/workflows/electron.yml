@@ -21,7 +21,13 @@ jobs:
 
       - name: install Electron 
         run: npm install electron
+
+      - name: install Forge 
+        run: npm install @electron-forge/cli
+        
+      - name: import Forge 
+        run: npx electron-forge import
         
       - name: build app 
-        run: npm start
+        run: npm make
 
