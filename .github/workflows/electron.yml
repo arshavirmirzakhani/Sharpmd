@@ -17,7 +17,7 @@ jobs:
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 18
 
       - name: install Electron 
         run: npm install electron
@@ -27,4 +27,14 @@ jobs:
         
       - name: build 
         run: npx electron-packager . 
+
+      - name: release app 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
 
