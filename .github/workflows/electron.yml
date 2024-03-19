@@ -22,12 +22,9 @@ jobs:
       - name: install Electron 
         run: npm install electron
 
-      - name: install Forge 
-        run: npm install @electron-forge/cli
+      - name: install packager 
+        run: npm install @electron/packager
         
-      - name: import Forge 
-        run: npx electron-forge import
-        
-      - name: build app 
-        run: npm make
+      - name: build 
+        run: npx electron-packager . 
 
